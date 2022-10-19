@@ -30,10 +30,10 @@ class ItemController extends Controller
         $converter = new CommonMarkConverter(['html_input' => 'escape', 'allow_unsafe_links' => false]);
 
         $item = Item::create([
-            'name' => $request->get('name'),
-            'price' => $request->get('price'),
-            'url' => $request->get('url'),
-            'description' => $converter->convert($request->get('description'))->getContent(),
+            'name' => $request['name'],
+            'price' => $request['price'],
+            'url' => $request['url'],
+            'description' => $converter->convert($request['description'])->getContent(),
         ]);
 
         $serializer = new ItemSerializer($item);
@@ -50,7 +50,7 @@ class ItemController extends Controller
         return new JsonResponse(['item' => $serializer->getData()]);
     }
 
-    public function update(Request $request, int $id): JsonResponse
+    public function update(Request $request, int $id)
     {
         $this->validate($request, [
             'name' => 'required|string|max:255',
@@ -62,10 +62,10 @@ class ItemController extends Controller
         $converter = new CommonMarkConverter(['html_input' => 'escape', 'allow_unsafe_links' => false]);
 
         $item = Item::findOrFail($id);
-        $item->name = $request->get('name');
-        $item->url = $request->get('url');
-        $item->price = $request->get('price');
-        $item->description = $converter->convert($request->get('description'))->getContent();
+        $item->name = $request['name'];
+        $item->url = $request['url'];
+        $item->price = $request['price'];
+        $item->description = $converter->convert($request['description'])->getContent();
         $item->save();
 
         return new JsonResponse(
