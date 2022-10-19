@@ -28,11 +28,18 @@ statistic should be displayed.
 Please write your answers to following questions.
 
 > **Please briefly explain your implementation of the new feature**  
->  
+>  I have added a new controller for statistic function.
+>  Also I could do it on ItemController but I thought this feature was seperated from Item CRUD actions.
+>  I used various Laravel unique functions such as scope, Carbon and Eloquent functions.
+>  For making CLI commant, it was a bit difficult because it is my first time to do this but I did it.
+>  Thanks.
 > _..._
 
 > **For the refactoring, would you change something else if you had more time?**  
->  
+>  Yes. Of course. Actually I don't like this kinds of CRUD actions.
+>  If there are enough time for me, I will rebuild it all thing.
+>  Regards.
+>  Tim.
 > _..._
 
 ## Running the project
